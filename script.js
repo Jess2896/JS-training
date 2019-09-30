@@ -1,24 +1,34 @@
-let John = {
-    fullName : 'John Smith',
-    mass : 70,
-    height : 1.9,
-    calcBIM: function(){
-        return this.BMI=this.mass/(this.height*this.height);
+const john = {
+    fullName: 'John Smith',
+    mass: 70,
+    height: 1.7,
+
+    calcBIM() {
+        return this.BMI = this.mass / Math.pow(this.height, 2);
     }
+};
+
+const mark = {
+    fullName: 'Mark Doe',
+    mass: 50,
+    height: 1.5
+};
+
+const winner = {};
+
+mark.calcBIM = john.calcBIM;
+john['BMI'] = john.calcBIM();
+mark['BMI'] = mark.calcBIM();
+
+if (john.BMI > mark.BMI) {
+    winner['name'] = 'John';  
+    winner['BMI'] = john.BMI;
+}
+else if (mark.BMI > john.BMI) {
+    winner['name'] = 'Mark';
+    winner['BMI'] = mark.BMI;
 }
 
-let Mark = {
-    fullName : 'Mark Doe',
-    mass : 50,
-    height : 1.5,
-    calcBIM: function(){
-        return this.BMI=this.mass/(this.height*this.height);
-    }
-}
-let highestBMI='John and Mark have the same BMI';
-
-if(John.calcBIM()!==Mark.calcBIM()){
-    highestBMI = John.BMI>Mark.BMI?John.fullName+" has the highest BMI of "+ John.BMI:Mark.fullName+" has the highest BMI of "+ Mark.BMI;;
-}
+highestBMI = john.BMI !== mark.BMI ? `${winner.name} has the highest BMI of ${winner.BMI}` : 'Both have the same BMI';
 
 console.log(highestBMI);
