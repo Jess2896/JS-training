@@ -1,67 +1,93 @@
-let john = {
-    bills : [124,48,268,180,42],
-    allTips : [],
-    finalAmounts : [],
-    calcTips : function(){
-        for(let i=0;i<this.bills.length;i++){
-            if(this.bills[i]<50){
-                this.allTips.push(this.bills[i]*0.2);
-                this.finalAmounts.push(this.allTips[i]+this.bills[i]);
+const johnsFamily = {
+    name: 'John',
+    bills: [124, 48, 268, 180, 42],
+    allTips: [],
+    finalAmounts: [],
+
+    calcTips() {
+
+        this.bills.forEach(bill => {
+            let tip;
+
+            if (bill < 50){
+                tip = bill * 0.2;
+                this.allTips.push(tip);
+                this.finalAmounts.push(tip + bill);
             }
-            else if(this.bills[i]<200){
-                this.allTips.push(this.bills[i]*0.15);
-                this.finalAmounts.push(this.allTips[i]+this.bills[i]);
+            else if (bill < 200) {
+                tip = bill * 0.15;
+                this.allTips.push(tip);
+                this.finalAmounts.push(tip + bill);
             }
-            else{
-                this.allTips.push(this.bills[i]*0.1);
-                this.finalAmounts.push(this.allTips[i]+this.bills[i]);
-            }
-        }
+            else {
+                tip = bill * 0.1;
+                this.allTips.push(tip);
+                this.finalAmounts.push(tip + bill);
+            } 
+        });
     }
-}
-john.calcTips();
-console.log(john.allTips);
-console.log(john.finalAmounts);
+};
+
+johnsFamily.calcTips();
+
+console.log(johnsFamily.allTips);
+console.log(johnsFamily.finalAmounts);
 
 //Extra
 
-let mark = {
-    bills : [77,375,110,45],
-    allTips : [],
-    finalAmounts : [],
-    calcTips : function(){
-        for(let i=0;i<this.bills.length;i++){
-            if(this.bills[i]<100){
-                this.allTips.push(this.bills[i]*0.2);
-                this.finalAmounts.push(this.allTips[i]+this.bills[i]);
+const marksFamily = {
+    name: 'Mark',
+    bills: [77, 375, 110, 45],
+    allTips: [],
+    finalAmounts: [],
+    
+    calcTips() {
+
+        this.bills.forEach(bill => {
+            let tip;
+            if (bill < 100) {
+                tip = bill * 0.2;
+                this.allTips.push(tip);
+                this.finalAmounts.push(tip + bill);
             }
-            else if(this.bills[i]<300){
-                this.allTips.push(this.bills[i]*0.1);
-                this.finalAmounts.push(this.allTips[i]+this.bills[i]);
+            else if (bill < 300) {
+                tip = bill * 0.1;
+                this.allTips.push(tip);
+                this.finalAmounts.push(tip + bill);
             }
-            else{
-                this.allTips.push(this.bills[i]*0.25);
-                this.finalAmounts.push(this.allTips[i]+this.bills[i]);
+            else {
+                tip = bill * 0.25;
+                this.allTips.push(tip);
+                this.finalAmounts.push(tip + bill);
             }
-        }
+        });
     }
+};
+
+const highestTipsFamily = '';
+
+function tipsAvrg(tips) {
+    let sum = 0;
+
+    tips.forEach(tip => {
+        sum += tip;
+    });
+
+    return sum / tips.length;
 }
 
-function tipsAvrg(tips){
-    let sum=0;
-    for(let i=0;i<tips.length;i++){
-        sum+=tips[i];
-    }
-    return sum/tips.length;
+marksFamily.calcTips();
+
+johnsFamily['avrgTips'] = tipsAvrg(johnsFamily.allTips);
+marksFamily['avrgTips'] = tipsAvrg(marksFamily.allTips);
+
+if (johnsFamily.avrgTips > marksFamily.avrgTips) {
+    highestTipsFamily = johnsFamily.name;
+}
+else if (marksFamily.avrgTips > johnsFamily.avrgTips) {
+    highestTipsFamily = marksFamily.name;
 }
 
-mark.calcTips();
-john['avrgTips'] = tipsAvrg(john.allTips);
-mark['avrgTips'] = tipsAvrg(mark.allTips);
+const highestTips = johnsFamily.avrgTips !== marksFamily.avrgTips ? `${highestTipsFamily}\'s family has paid the highest amount of tips` : 'Both have paid the same amount of average tips';
 
-let highestTips='John and Mark have paid the same amount of average tips';
-
-if(john.avrgTips !== mark.avrgTips){
-    highestTips = john.avrgTips>mark.tipsAvrg?"John's family has paid the highest amount of tips":"Mark's family has paid the highest amount of tips";
-}
 console.log(highestTips);
