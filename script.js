@@ -1,25 +1,28 @@
-let johnTeamScores = [89,20,103];
-let mikeTeamScores = [116,94,123];
-let johnsAvrg = calcAverage(johnTeamScores);
-let mikesAvrg = calcAverage(mikeTeamScores);
-let hasHigherScore = johnsAvrg > mikesAvrg? "John's team has a higher average of " + johnsAvrg : "Mike's team has a higher average of " + mikesAvrg;
-let avrg = johnsAvrg == mikesAvrg? "John's and Mike's teams have the same average score" : hasHigherScore;
+const johnTeamScores = [89,20,103];
+const mikeTeamScores = [116,94,123];
+const johnsAvrg = calcAverage(johnTeamScores);
+const mikesAvrg = calcAverage(mikeTeamScores);
+const hasHigherScore = johnsAvrg > mikesAvrg ? "John's team has a higher average of " + johnsAvrg : "Mike's team has a higher average of " + mikesAvrg;
+const avrg = johnsAvrg == mikesAvrg ? "John's and Mike's teams have the same average score" : hasHigherScore;
 
 function calcAverage(scores) {
+    
     let sum = 0;
+
     scores.forEach(score => {
         sum += score;
     });
-    return sum/scores.length;
+
+    return sum / scores.length;
 }
 
 //Extra
 
-let maryTeamScores = [97,134,105];
-let maryAvrg = calcAverage(maryTeamScores);
+const maryTeamScores = [97,134,105];
+const maryAvrg = calcAverage(maryTeamScores);
 let winner = "The three teams are tied";
 
-if (maryAvrg > johnsAvrg && maryAvrg> mikesAvrg) {
+if (maryAvrg > johnsAvrg && maryAvrg > mikesAvrg) {
     winner = "Mary's team has the highest average score of " + maryAvrg;
 }
 else if (maryAvrg !== johnsAvrg && maryAvrg !== mikesAvrg) {
