@@ -1,7 +1,7 @@
-let markMass = 70;
-let markHeight = 1.70;
-let johnMass = 50;
-let johnHeight = 1.90;
+const markMass = 70;
+const markHeight = 1.70;
+const johnMass = 50;
+const johnHeight = 1.90;
 let isMarkHigherBMI = calculateBMI(markMass, markHeight) > calculateBMI(johnMass, johnHeight);
 
 function calculateBMI(mass, height) {
