@@ -12,7 +12,7 @@ GAME RULES:
 /**
  * Challenges
  * 1- If a player rolls a 6 twice in a row, their turn ends and they lose their score
- * 2- Added a new field so the players can insert the max score
+ * 2- Added a new field so the players can insert a new max score
  * 3- Added a second dice, the player's turn ends if either of them rolls a 1
  */
 
@@ -23,17 +23,12 @@ init();
 document.querySelector('.btn-roll').addEventListener('click', function() {
 
    if (gamePlaying) {
-    let dice = Math.floor(Math.random() * 6) + 1;
-    let secondDice = Math.floor(Math.random() * 6) + 1;
-    let sum = dice + secondDice;
-    
-    diceDOM = document.querySelector('.dice');
-    diceDOM.style.display = 'block';
-    diceDOM.src = 'dice-' + dice + '.png';
+    let dice = getDiceNumber();
+    let secondDice = getDiceNumber();
+    const sum = dice + secondDice;
 
-    diceDOM = document.querySelector('.secondDice');
-    diceDOM.style.display = 'block';
-    diceDOM.src = 'dice-' + secondDice + '.png';
+    diceDOM = setDiceDOM(dice, '.dice');
+    diceDOM = setDiceDOM(secondDice, '.secondDice');
 
     //This is for the first challenge's rule, not meant to work for both dice
     if (dice === 6 && dice === previousRoll) {
@@ -70,12 +65,22 @@ document.querySelector('.btn-hold').addEventListener('click', function() {
     }
 });
 
-document.querySelector('.btn-submit').addEventListener('click', function() {
+document.querySelector('.btn-changeMaxScore').addEventListener('click', function() {
     maxScore = document.getElementById('maxScore').value;
-    document.querySelector('.maxScore').value = '';
+    document.getElementById('maxScore').value = '';
 });
 
 document.querySelector('.btn-new').addEventListener('click', init);
+
+function getDiceNumber() {
+    return Math.floor(Math.random() * 6) + 1;
+}
+
+function setDiceDOM(dice, diceName) {
+    diceDOM = document.querySelector(diceName);
+    diceDOM.style.display = 'block';
+    diceDOM.src = 'dice-' + dice + '.png';
+}
 
 function nextPlayer() {
 

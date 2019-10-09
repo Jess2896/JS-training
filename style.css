@@ -105,7 +105,6 @@ body {
 
 button {
     position: absolute;
-    width: 200px;
     left: 50%;
     transform: translateX(-50%);
     color: #555;
@@ -137,9 +136,22 @@ i {
     transition: margin 0.3s;
 }
 
-.btn-new { top: 45px;}
-.btn-roll { top: 403px;}
-.btn-hold { top: 467px;}
+.btn-new { 
+    top: 45px;
+    width: 200px;
+}
+.btn-roll { 
+    top: 403px;
+    width: 200px;
+}
+.btn-hold { 
+    top: 467px;
+    width: 200px;
+}
+.btn-changeMaxScore { 
+    top: 550px;
+    left: 52%;
+}
 
 .dice {
     position: absolute;
@@ -164,7 +176,11 @@ i {
 
 .score {
     position: absolute;
-    top: 550px;
+    left: 43%;
+    top: 510px;
     font-size: 20px;
     color: #222;
+    font-family: Lato;
+    font-size: 20px;
+    text-transform: uppercase;
 }

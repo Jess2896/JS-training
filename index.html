@@ -29,10 +29,10 @@
                 </div>
             </div>
             
-            <div class="score">Set the winning score(20-100)
-                <input type="number" name="maxScore" value=%(winScore)s min="20" max="100">
-                <input type="Submit" class="btn-submit" value="Restart game">
+            <div class="score">
+                <input type="number" id="maxScore" value=%(winScore)s min="20" placeholder="Enter a new final score">
             </div>
+            <button class="btn-changeMaxScore">Change final score</button>
             <button class="btn-new"><i class="ion-ios-plus-outline"></i>New game</button>
             <button class="btn-roll"><i class="ion-ios-loop"></i>Roll dice</button>
             <button class="btn-hold"><i class="ion-ios-download-outline"></i>Hold</button>
