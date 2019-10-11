@@ -1,10 +1,38 @@
-const johnTeamScores = [89,20,103];
-const mikeTeamScores = [116,94,123];
+const johnTeamScores = [89, 20, 103];
+const mikeTeamScores = [116, 94, 123];
 const johnsAvrg = calcAverage(johnTeamScores);
 const mikesAvrg = calcAverage(mikeTeamScores);
-const hasHigherScore = johnsAvrg > mikesAvrg ? "John's team has a higher average of " + johnsAvrg : "Mike's team has a higher average of " + mikesAvrg;
-const avrg = johnsAvrg == mikesAvrg ? "John's and Mike's teams have the same average score" : hasHigherScore;
 
+const higherAverage = {
+    winner: 'John and Mike',
+    score: '',
+    numberOfWinners: 1,
+
+    setWinner() {
+
+        if (johnsAvrg !== mikesAvrg && johnsAvrg > mikesAvrg) {
+            this.winner = 'John';
+            this.score = johnsAvrg;
+        }
+        else if (johnsAvrg !== mikesAvrg) {
+            this.winner = 'Mike';
+            this.score = mikesAvrg;
+        }
+        else {
+            this.numberOfWinners = 2;
+        }
+    }
+};
+
+/**
+ * Determines which team has the highest average score and stores the results
+ */
+higherAverage.setWinner();
+
+/**
+ * Calculates the average of the given array of numbers
+ * @param {integers[]} scores 
+ */
 function calcAverage(scores) {
     
     let sum = 0;
@@ -18,21 +46,30 @@ function calcAverage(scores) {
 
 //Extra
 
-const maryTeamScores = [97,134,105];
+const maryTeamScores = [97, 134, 105];
 const maryAvrg = calcAverage(maryTeamScores);
-let winner = "The three teams are tied";
 
 if (maryAvrg > johnsAvrg && maryAvrg > mikesAvrg) {
-    winner = "Mary's team has the highest average score of " + maryAvrg;
-}
-else if (maryAvrg !== johnsAvrg && maryAvrg !== mikesAvrg) {
-    winner = avrg;
-}
-else if (maryAvrg > johnsAvrg && maryAvrg == mikesAvrg) {
-    winner = "Mary's and Mike's teams have the highest score";
-}
-else if (maryAvrg > mikesAvrg && maryAvrg == johnsAvrg) {
-    winner = "Mary's and John's teams have the highest score";
+    higherAverage.winner = 'Mary';
+    higherAverage.score = maryAvrg;
+    higherAverage.numberOfWinners = 1;
 }
 
-console.log(winner);
+else if (maryAvrg > johnsAvrg && maryAvrg == mikesAvrg) {
+    higherAverage.winner = 'Mary and Mike';
+    higherAverage.numberOfWinners = 2;
+}
+
+else if (maryAvrg > mikesAvrg && maryAvrg == johnsAvrg) {
+    higherAverage.winner = 'Mary and John';
+    higherAverage.numberOfWinners = 2;
+}
+
+else if (maryAvrg === mikesAvrg && maryAvrg === johnsAvrg) {
+    higherAverage.winner = 'Mary, John and Mike';
+    higherAverage.numberOfWinners = 3;
+}
+
+const highestScore = higherAverage.numberOfWinners === 1 ? `${higherAverage.winner}\'s team has the highest average score of ${higherAverage.score}` : `${higherAverage.winner} have the same score`;
+
+console.log(highestScore);
