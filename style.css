@@ -105,7 +105,6 @@ body {
 
 button {
     position: absolute;
-    width: 200px;
     left: 50%;
     transform: translateX(-50%);
     color: #555;
@@ -137,14 +136,36 @@ i {
     transition: margin 0.3s;
 }
 
-.btn-new { top: 45px;}
-.btn-roll { top: 403px;}
-.btn-hold { top: 467px;}
+.btn-new { 
+    top: 45px;
+    width: 200px;
+}
+.btn-roll { 
+    top: 403px;
+    width: 200px;
+}
+.btn-hold { 
+    top: 467px;
+    width: 200px;
+}
+.btn-changeMaxScore { 
+    top: 550px;
+    left: 52%;
+}
 
 .dice {
     position: absolute;
     left: 50%;
-    top: 178px;
+    top: 250px;
+    transform: translateX(-50%);
+    height: 100px;
+    box-shadow: 0px 10px 60px rgba(0, 0, 0, 0.10);
+}
+
+.secondDice {
+    position: absolute;
+    left: 50%;
+    top: 100px;
     transform: translateX(-50%);
     height: 100px;
     box-shadow: 0px 10px 60px rgba(0, 0, 0, 0.10);
@@ -152,3 +173,14 @@ i {
 
 .winner { background-color: #f7f7f7; }
 .winner .player-name { font-weight: 300; color: #EB4D4D; }
+
+.score {
+    position: absolute;
+    left: 43%;
+    top: 510px;
+    font-size: 20px;
+    color: #222;
+    font-family: Lato;
+    font-size: 20px;
+    text-transform: uppercase;
+}
